@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c40f2c15169ec4a31babc7978db148f3
+guid: 33fc08ff69b1c43fca757a13bc3f89cb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mushroom-Attack_0
+      name: Swordsman-Hurt_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 64
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75300977a1c064c50ae8a275aea3fae6
-      internalID: -1963044333
+      spriteID: 9555ae4f0562946ae94a7cf28d0aa465
+      internalID: -1070484901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Attack_1
+      name: Swordsman-Hurt_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 100
         y: 0
-        width: 80
-        height: 64
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26916dbcdfca34bfc9e0cd8cd555f684
-      internalID: -285718714
+      spriteID: d773f3fdfdaaf408b9c607f4480b356a
+      internalID: -1899128363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Attack_2
+      name: Swordsman-Hurt_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 200
         y: 0
-        width: 80
-        height: 64
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8286f9d6db8e4b1bad3e2246b58d08d
-      internalID: 1526147705
+      spriteID: bb235d1e3e4c94b4393e811437705ef1
+      internalID: 2006110976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Attack_3
+      name: Swordsman-Hurt_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 300
         y: 0
-        width: 80
-        height: 64
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,41 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1a745b9436654ed787786b5e4f7c0d8
-      internalID: -181201689
+      spriteID: a0f3a98c4c6634fe8beb893f691a40f5
+      internalID: 1518671912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Attack_4
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9bd65c4598f044c2a39aa2e736b422f
-      internalID: -927338409
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Attack_5
+      name: Swordsman-Hurt_4
       rect:
         serializedVersion: 2
         x: 400
         y: 0
-        width: 80
-        height: 64
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,92 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6f38dd20482242bc8775417fd7f2d79
-      internalID: -871984031
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Attack_6
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96e2bd5fa6fae4dd4b2cac65955502e3
-      internalID: -2122925310
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Attack_7
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a89f2dc44f86143ffb4ead593e3152fa
-      internalID: -1566480210
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Attack_8
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eecc878c736be446593d0d1c555ed756
-      internalID: -1897877747
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Attack_9
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b2921140f9be4f7a8f77ab30ee90406
-      internalID: 1188981533
+      spriteID: b9ed40a4d779b4b9ab9007d7e9e23e17
+      internalID: 1896998558
       vertices: []
       indices: 
       edges: []
@@ -343,16 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mushroom-Attack_0: -1963044333
-      Mushroom-Attack_1: -285718714
-      Mushroom-Attack_2: 1526147705
-      Mushroom-Attack_3: -181201689
-      Mushroom-Attack_4: -927338409
-      Mushroom-Attack_5: -871984031
-      Mushroom-Attack_6: -2122925310
-      Mushroom-Attack_7: -1566480210
-      Mushroom-Attack_8: -1897877747
-      Mushroom-Attack_9: 1188981533
+      Swordsman-Hurt_0: -1070484901
+      Swordsman-Hurt_1: -1899128363
+      Swordsman-Hurt_2: 2006110976
+      Swordsman-Hurt_3: 1518671912
+      Swordsman-Hurt_4: 1896998558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
