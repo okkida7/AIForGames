@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public int health = 5; // Player health
+    public float health = 5f; // Player health
     private Rigidbody2D rb;
     private Vector2 movement;
     private Animator animator;
@@ -70,14 +70,18 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log("Player Health: " + health);
-
+        animator.SetBool("isHurt", true);
+        Invoke("ResetHurt", 0.3f);
         if (health <= 0)
         {
-            Debug.Log("Player is dead!");
-            // Handle player death (e.g., trigger death animation, restart level, etc.)
-            // animator.SetTrigger("death");
+            animator.SetBool("isDead", true);
+            Destroy(gameObject, 2f);
         }
+    }
+
+    void ResetHurt()
+    {
+        animator.SetBool("isHurt", false);
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -89,5 +93,14 @@ public class PlayerController : MonoBehaviour
             enemy.TakeDamage(1);
         }
         
+    }
+
+    public float Health {
+        set {
+            health = value;
+        }
+        get {
+            return health;
+        }
     }
 }
