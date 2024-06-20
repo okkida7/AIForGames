@@ -19,7 +19,10 @@ public class EnemyAttack : MonoBehaviour
     public void AttackRight() {
         attackCollider.enabled = true;
         Collider2D other = Physics2D.OverlapCircle(rightAttackPoint.position, attackRange, playerLayer);
-        if(other.tag == "Player"){
+        if(other == null) {
+            return;
+        }
+        else if(other.tag == "Player"){
             PlayerController player = other.GetComponent<PlayerController>();
             if(player != null) {
                 player.TakeDamage(damage);
@@ -30,7 +33,10 @@ public class EnemyAttack : MonoBehaviour
     public void AttackLeft() {
         attackCollider.enabled = true;
         Collider2D other = Physics2D.OverlapCircle(leftAttackPoint.position, attackRange, playerLayer);
-        if(other.tag == "Player"){
+        if(other == null) {
+            return;
+        }
+        else if(other.tag == "Player"){
             PlayerController player = other.GetComponent<PlayerController>();
             if(player != null) {
                 player.TakeDamage(damage);

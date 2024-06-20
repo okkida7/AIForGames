@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float health = 5f; // Player health
+    public float stamina = 10f;
+    public float maxStamina = 10f;
+    public float staminaRegenRate = 1f;
+    public float staminaCost = 2f;
     private Rigidbody2D rb;
     private Vector2 movement;
     private Animator animator;
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        StartCoroutine(RegenerateStamina());
     }
 
     void Update()
@@ -32,11 +37,12 @@ public class PlayerController : MonoBehaviour
         rb.velocity = movement.normalized * moveSpeed;
 
         // Handle attack input
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && stamina >= staminaCost)
         {
             animator.SetBool("isAttacking", true);
             isAttacking = true;
             attackRegistered = false; // Reset attack registration
+            stamina -= staminaCost;
             Invoke("StopAttacking", 0.3f); // Stop attacking after a short delay
         }
     }
@@ -93,6 +99,19 @@ public class PlayerController : MonoBehaviour
             enemy.TakeDamage(1);
         }
         
+    }
+
+    IEnumerator RegenerateStamina()
+    {
+        while (true)
+        {
+            if (!isAttacking && stamina < maxStamina)
+            {
+                stamina += staminaRegenRate * Time.deltaTime;
+                stamina = Mathf.Clamp(stamina, 0, maxStamina);
+            }
+            yield return null;
+        }
     }
 
     public float Health {
