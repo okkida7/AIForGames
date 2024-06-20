@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float health = 5f; // Player health
-    public float stamina = 10f;
-    public float maxStamina = 10f;
+    public float stamina = 5f;
+    public float maxStamina = 5f;
     public float staminaRegenRate = 1f;
     public float staminaCost = 2f;
     private Rigidbody2D rb;
