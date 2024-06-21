@@ -5,6 +5,7 @@ public class StartMenuController : MonoBehaviour
 {
     public GameObject startMenuPanel;
     public GameObject settingMenuPanel;
+    public GameObject promptPanel;
 
     public void StartGame()
     {

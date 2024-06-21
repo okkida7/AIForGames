@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Check Time.deltaTime to ensure the player cannot act during time scale = 0
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
         // Capture input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");

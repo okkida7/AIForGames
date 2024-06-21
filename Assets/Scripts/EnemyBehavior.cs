@@ -169,6 +169,10 @@ public class EnemyBehavior : MonoBehaviour
     void Die()
     {
         anim.SetBool("isDead", true);
+        // enemy cannot move after death
+        patrolSpeed = 0;
+        chasingSpeed = 0;
+        spriteRenderer.flipX = false;
         Destroy(gameObject, 1f);
     }
 
