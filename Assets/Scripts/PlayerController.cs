@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isAttacking = false; // Tracks whether the player is attacking
     private bool attackRegistered = false; // Tracks whether the attack has been registered
+    private bool isDead = false;
 
     void Start()
     {
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Check Time.deltaTime to ensure the player cannot act during time scale = 0
-        if (Time.deltaTime == 0)
+        if (Time.deltaTime == 0 || isDead)
         {
             return;
         }
@@ -85,9 +87,15 @@ public class PlayerController : MonoBehaviour
         Invoke("ResetHurt", 0.3f);
         if (health <= 0)
         {
+            isDead = true;
             animator.SetBool("isDead", true);
-            Destroy(gameObject, 2f);
+            Invoke("GameOver", 2f);
         }
+    }
+
+    void GameOver()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 
     void ResetHurt()

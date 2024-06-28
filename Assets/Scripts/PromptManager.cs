@@ -7,6 +7,10 @@ public class PromptManager : MonoBehaviour
 {
     public GameObject promptPanel; // Panel containing the input field and button
     public TMP_InputField promptInputField; // Input field for the prompt
+    public GameObject playerChoice;
+    public GameObject Swordsman;
+    public GameObject Axeman;
+    public GameObject Wizard;
 
     void Start()
     {
@@ -20,14 +24,35 @@ public class PromptManager : MonoBehaviour
         if (!string.IsNullOrEmpty(prompt))
         {
             Debug.Log("Prompt: " + prompt); // Handle the prompt here if needed
-            StartGame();
+            ShowChoice();
         }
     }
 
-    public void StartGame()
+    public void ShowChoice()
     {
         // Hide the prompt panel
         promptPanel.SetActive(false);
-        Time.timeScale = 1f;
+        playerChoice.SetActive(true);
+    }
+
+    public void ChoiceSword()
+    {
+        playerChoice.SetActive(false);
+        Swordsman.SetActive(true);
+        Time.timeScale = 1f; // Resume the game
+    }
+
+    public void ChoiceAxe()
+    {
+        playerChoice.SetActive(false);
+        Axeman.SetActive(true);
+        Time.timeScale = 1f; // Resume the game
+    }
+
+    public void ChoiceWizard()
+    {
+        playerChoice.SetActive(false);
+        Wizard.SetActive(true);
+        Time.timeScale = 1f; // Resume the game
     }
 }

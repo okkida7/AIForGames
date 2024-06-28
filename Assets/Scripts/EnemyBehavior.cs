@@ -36,12 +36,17 @@ public class EnemyBehavior : MonoBehaviour
         waitTime = patrolWaitTime;
         movePos.position = GetRandomPos();
         anim = GetComponent<Animator>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void Update()
     {
+        if(Time.deltaTime == 0)
+        {
+            return;
+        }
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         if (playerTransform != null)
         {
             float distance = (transform.position - playerTransform.position).sqrMagnitude;

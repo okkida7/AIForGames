@@ -41,6 +41,10 @@ public class EnemyAttack : MonoBehaviour
             if(player != null) {
                 player.TakeDamage(damage);
             }
+            WizardPlayerController wizardPlayer = other.GetComponent<WizardPlayerController>();
+            if(wizardPlayer != null) {
+                wizardPlayer.TakeDamage(damage);
+            }
         }
     }
 
