@@ -16,7 +16,7 @@ public class WizardPlayerController : MonoBehaviour
     private Vector2 movement;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    private bool isAttacking = false; // Tracks whether the player is attacking
+    public bool isAttacking = false; // Tracks whether the player is attacking
     private bool attackRegistered = false; // Tracks whether the attack has been registered
     public bool isDead = false;
 

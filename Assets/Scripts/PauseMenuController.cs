@@ -4,10 +4,16 @@ using UnityEngine.SceneManagement;
 public class PauseMenuController : MonoBehaviour
 {
     public GameObject pauseMenuPanel;
-    private bool isPaused = false;
+    public GameObject promptPanel;
+    public GameObject playerChoicePanel;
+    private bool isPaused = false; 
 
     void Update()
     {
+        if(promptPanel.activeSelf || playerChoicePanel.activeSelf)
+        {
+            return;
+        }
         // Toggle pause menu on Tab key press
         if (Input.GetKeyDown(KeyCode.Tab))
         {
