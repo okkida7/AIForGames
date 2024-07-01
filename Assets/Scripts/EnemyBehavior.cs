@@ -129,7 +129,9 @@ public class EnemyBehavior : MonoBehaviour
         }
         else
         {
-            enemyAttack.StopAttack();
+            if(enemyAttack != null){
+                enemyAttack.StopAttack();
+            }
             animTime = setAnimTime;
             isAttacking = false;
             anim.SetBool("isAttacking", isAttacking);

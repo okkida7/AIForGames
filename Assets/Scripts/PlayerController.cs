@@ -19,12 +19,15 @@ public class PlayerController : MonoBehaviour
     private bool attackRegistered = false; // Tracks whether the attack has been registered
     public bool isDead = false;
 
+    private float minX, maxX, minY, maxY;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(RegenerateStamina());
+        CalculateScreenBounds();
     }
 
     void Update()
@@ -52,6 +55,15 @@ public class PlayerController : MonoBehaviour
             stamina -= staminaCost;
             Invoke("StopAttacking", 0.3f); // Stop attacking after a short delay
         }
+    }
+
+    void FixedUpdate()
+    {
+        // Clamp the player's position within the screen bounds
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, minY, maxY);
+        transform.position = clampedPosition;
     }
 
     void UpdateAnimation()
@@ -109,7 +121,15 @@ public class PlayerController : MonoBehaviour
         {
             attackRegistered = true;
             EnemyBehavior enemy = other.GetComponent<EnemyBehavior>();
-            enemy.TakeDamage(1);
+            EnemyRangeAttack rangeEnemy = other.GetComponent<EnemyRangeAttack>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(1);
+            }
+            else if (rangeEnemy != null)
+            {
+                rangeEnemy.TakeDamage(1);
+            }
         }
         
     }
@@ -134,5 +154,17 @@ public class PlayerController : MonoBehaviour
         get {
             return health;
         }
+    }
+
+    void CalculateScreenBounds()
+    {
+        Camera mainCamera = Camera.main;
+        Vector3 screenBottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.transform.position.z));
+        Vector3 screenTopRight = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, mainCamera.transform.position.z));
+
+        minX = screenBottomLeft.x;
+        maxX = screenTopRight.x;
+        minY = screenBottomLeft.y;
+        maxY = screenTopRight.y;
     }
 }

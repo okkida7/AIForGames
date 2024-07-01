@@ -36,9 +36,14 @@ public class WizardProjectile : MonoBehaviour
         {
             // Deal damage to the enemy
             EnemyBehavior enemy = collision.GetComponent<EnemyBehavior>();
+            EnemyRangeAttack enemyRangeAttack = collision.GetComponent<EnemyRangeAttack>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
+            } 
+            else if (enemyRangeAttack != null)
+            {
+                enemyRangeAttack.TakeDamage(damage);
             }
 
             // Destroy the projectile upon collision

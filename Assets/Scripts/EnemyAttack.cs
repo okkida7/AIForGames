@@ -24,8 +24,12 @@ public class EnemyAttack : MonoBehaviour
         }
         else if(other.tag == "Player"){
             PlayerController player = other.GetComponent<PlayerController>();
+            WizardPlayerController wizardPlayer = other.GetComponent<WizardPlayerController>();
             if(player != null) {
                 player.TakeDamage(damage);
+            }
+            else if(wizardPlayer != null) {
+                wizardPlayer.TakeDamage(damage);
             }
         }
     }
@@ -38,11 +42,11 @@ public class EnemyAttack : MonoBehaviour
         }
         else if(other.tag == "Player"){
             PlayerController player = other.GetComponent<PlayerController>();
+            WizardPlayerController wizardPlayer = other.GetComponent<WizardPlayerController>();
             if(player != null) {
                 player.TakeDamage(damage);
             }
-            WizardPlayerController wizardPlayer = other.GetComponent<WizardPlayerController>();
-            if(wizardPlayer != null) {
+            else if(wizardPlayer != null) {
                 wizardPlayer.TakeDamage(damage);
             }
         }
