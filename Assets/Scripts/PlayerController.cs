@@ -114,6 +114,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TakeHealth(int healthAmount)
+    {
+        health += healthAmount;
+        health = Mathf.Clamp(health, 0, 5);
+    }
+
     void GameOver()
     {
         SceneManager.LoadScene("StartMenu");
