@@ -19,6 +19,8 @@ public class WizardPlayerController : MonoBehaviour
     public bool isAttacking = false; // Tracks whether the player is attacking
     private bool attackRegistered = false; // Tracks whether the attack has been registered
     public bool isDead = false;
+    public AudioSource hurtSE;
+    public AudioSource deadSE;
 
     void Start()
     {
@@ -102,17 +104,35 @@ public class WizardPlayerController : MonoBehaviour
     {
         health -= damage;
         animator.SetBool("isHurt", true);
+        hurtSE.Play();
         Invoke("ResetHurt", 0.3f);
         if (health <= 0)
         {
-            isDead = true;
-            animator.SetBool("isDead", true);
-            Destroy(gameObject, 2f);
+            Die();
+            if(health < 0)
+            {
+                deadSE.Stop();
+            }
+            Invoke("GameOver", 2f);
         }
+    }
+
+    void Die()
+    {
+        isDead = true;
+        hurtSE.Stop();
+        deadSE.Play();
+        animator.SetBool("isDead", true);
+    }
+
+    void GameOver()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StartMenu");
     }
 
     void ResetHurt()
     {
+        hurtSE.Stop();
         animator.SetBool("isHurt", false);
     }
 

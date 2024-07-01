@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking = false; // Tracks whether the player is attacking
     private bool attackRegistered = false; // Tracks whether the attack has been registered
     public bool isDead = false;
+    public AudioSource hurtSE;
+    public AudioSource deadSE;
 
     private float minX, maxX, minY, maxY;
 
@@ -96,10 +98,17 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         animator.SetBool("isHurt", true);
+        hurtSE.Play();
         Invoke("ResetHurt", 0.3f);
         if (health <= 0)
         {
             isDead = true;
+            hurtSE.Stop();
+            deadSE.Play();
+            if(health < 0)
+            {
+                deadSE.Stop();
+            }
             animator.SetBool("isDead", true);
             Invoke("GameOver", 2f);
         }

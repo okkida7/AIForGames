@@ -11,6 +11,8 @@ public class PromptManager : MonoBehaviour
     public GameObject Swordsman;
     public GameObject Axeman;
     public GameObject Wizard;
+    public AudioSource selectSE;
+    public AudioSource backSE;
 
     void Start()
     {
@@ -23,8 +25,11 @@ public class PromptManager : MonoBehaviour
         string prompt = promptInputField.text;
         if (!string.IsNullOrEmpty(prompt))
         {
+            selectSE.Play();
             Debug.Log("Prompt: " + prompt); // Handle the prompt here if needed
             ShowChoice();
+        } else{
+            backSE.Play();
         }
     }
 
@@ -37,6 +42,7 @@ public class PromptManager : MonoBehaviour
 
     public void ChoiceSword()
     {
+        selectSE.Play();
         playerChoice.SetActive(false);
         Swordsman.SetActive(true);
         Time.timeScale = 1f; // Resume the game
@@ -44,6 +50,7 @@ public class PromptManager : MonoBehaviour
 
     public void ChoiceAxe()
     {
+        selectSE.Play();
         playerChoice.SetActive(false);
         Axeman.SetActive(true);
         Time.timeScale = 1f; // Resume the game
@@ -51,6 +58,7 @@ public class PromptManager : MonoBehaviour
 
     public void ChoiceWizard()
     {
+        selectSE.Play();
         playerChoice.SetActive(false);
         Wizard.SetActive(true);
         Time.timeScale = 1f; // Resume the game

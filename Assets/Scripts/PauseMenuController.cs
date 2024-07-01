@@ -7,6 +7,7 @@ public class PauseMenuController : MonoBehaviour
     public GameObject promptPanel;
     public GameObject playerChoicePanel;
     private bool isPaused = false; 
+    public AudioSource selectSE;
 
     void Update()
     {
@@ -31,6 +32,7 @@ public class PauseMenuController : MonoBehaviour
     public void ResumeGame()
     {
         // Resume the game
+        selectSE.Play();
         pauseMenuPanel.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -39,6 +41,7 @@ public class PauseMenuController : MonoBehaviour
     public void RestartGame()
     {
         // Restart the game
+        selectSE.Play();
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -46,6 +49,7 @@ public class PauseMenuController : MonoBehaviour
     public void ExitGame()
     {
         // Exit to start menu
+        selectSE.Play();
         Time.timeScale = 1f;
         SceneManager.LoadScene("StartMenu");
     }
@@ -53,6 +57,7 @@ public class PauseMenuController : MonoBehaviour
     private void PauseGame()
     {
         // Pause the game
+        selectSE.Play();
         pauseMenuPanel.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
