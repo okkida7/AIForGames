@@ -13,6 +13,7 @@ public class PromptManager : MonoBehaviour
     public GameObject Wizard;
     public AudioSource selectSE;
     public AudioSource backSE;
+    public MapGenerator mapGenerator;
 
     void Start()
     {
@@ -27,6 +28,8 @@ public class PromptManager : MonoBehaviour
         {
             selectSE.Play();
             Debug.Log("Prompt: " + prompt); // Handle the prompt here if needed
+            StartCoroutine(mapGenerator.TestConnection());
+            // StartCoroutine(mapGenerator.GenerateMap(prompt));
             ShowChoice();
         } else{
             backSE.Play();
