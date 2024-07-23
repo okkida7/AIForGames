@@ -1,72 +1,80 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Text;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 public class MapGenerator : MonoBehaviour
 {
-    private string url = "YOUR_SERVER_URL"; // Replace with your server URL
-    private string testURL = "https://alexis-jin.com/"; // Test URL for local server
 
-    public IEnumerator TestConnection()
+    // Assign these in the Unity Editor
+    public GameObject[] tilePrefabs; // Array to hold tile sprites
+    public static List<Vector3> landPositions = new List<Vector3>();
+    public static List<Vector3> waterPositions = new List<Vector3>();
+    public static List<Vector3> treePositions = new List<Vector3>();
+    public static List<Vector3> obstaclePositions = new List<Vector3>();
+
+    public IEnumerator PostPrompt(string url, string prompt)
     {
-        UnityWebRequest request = UnityWebRequest.Get(testURL);
+        // Create JSON object
+        var requestData = new { prompt = prompt };
+        string json = JsonConvert.SerializeObject(requestData);
 
-        yield return request.SendWebRequest();
-
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            Debug.Log("Server is running");
-        }
-        else
-        {
-            Debug.LogError("Error: " + request.error);
-        }
-    }
-
-    public IEnumerator GenerateMap(string prompt)
-    {
-        Dictionary<string, string> jsonData = new Dictionary<string, string>
-        {
-            { "prompt", prompt }
-        };
-        
-        string json = JsonUtility.ToJson(jsonData);
-        byte[] postData = Encoding.UTF8.GetBytes(json);
-
-        UnityWebRequest request = new UnityWebRequest(url, "POST")
-        {
-            uploadHandler = new UploadHandlerRaw(postData),
-            downloadHandler = new DownloadHandlerBuffer()
-        };
-
+        // Create UnityWebRequest
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
 
+        // Send the request and wait for the response
         yield return request.SendWebRequest();
 
-        if (request.result == UnityWebRequest.Result.Success)
+        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
         {
-            string responseText = request.downloadHandler.text;
-            int[,] map = JsonUtility.FromJson<int[,]>(responseText);
-            GenerateMapFromData(map);
+            Debug.LogError(request.error);
         }
         else
         {
-            Debug.LogError("Error: " + request.error);
+            // Parse the response JSON into a 2D array
+            string responseJson = request.downloadHandler.text;
+            int[][] map = JsonConvert.DeserializeObject<int[][]>(responseJson);
+
+            // Generate the map based on the 2D array
+            GenerateMap(map);
         }
     }
 
-    private void GenerateMapFromData(int[,] mapData)
+    public void GenerateMap(int[][] map)
     {
-        // Implement your map generation logic here using the mapData array
-        for (int y = 0; y < mapData.GetLength(0); y++)
+        for (int i = 0; i < map.Length; i++)
         {
-            for (int x = 0; x < mapData.GetLength(1); x++)
+            for (int j = 0; j < map[i].Length; j++)
             {
-                // Example: Instantiate a tile based on the value in mapData[y, x]
-                Debug.Log($"Map value at [{y},{x}]: {mapData[y, x]}");
-                // Instantiate your tile here based on the value
+                Vector3 position = new Vector3(j, -i, 0); // Adjust as needed
+                int tileIndex = map[i][j];
+
+                if (tileIndex >= 0 && tileIndex < tilePrefabs.Length)
+                {
+                    GameObject tile = Instantiate(tilePrefabs[tileIndex], position, Quaternion.identity);
+
+                    if (tile.CompareTag("Land"))
+                    {
+                        landPositions.Add(position);
+                    }
+                    else if (tile.CompareTag("Water"))
+                    {
+                        waterPositions.Add(position);
+                    }
+                    else if (tile.CompareTag("Tree"))
+                    {
+                        treePositions.Add(position);
+                    }
+                    else if (tile.CompareTag("Obstacle"))
+                    {
+                        obstaclePositions.Add(position);
+                    }
+                }
             }
         }
     }

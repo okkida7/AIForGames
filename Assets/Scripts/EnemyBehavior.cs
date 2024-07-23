@@ -34,7 +34,6 @@ public class EnemyBehavior : MonoBehaviour
     public void Start()
     {
         waitTime = patrolWaitTime;
-        movePos.position = GetRandomPos();
         anim = GetComponent<Animator>();
         //playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -60,48 +59,9 @@ public class EnemyBehavior : MonoBehaviour
                 else
                 {
                     anim.SetBool("isAttacking", false);
-                    GoToTarget();
                 }
             }
-            else
-            {
-                Patrol();
-            }
         }
-    }
-
-    void Patrol()
-    {
-        anim.SetBool("isWalking", true);
-        anim.SetBool("isAttacking", false);
-        transform.position = Vector2.MoveTowards(transform.position, movePos.position, patrolSpeed * Time.deltaTime);
-        if (Vector2.Distance(transform.position, movePos.position) < 0.1f)
-        {
-            if (waitTime <= 0)
-            {
-                movePos.position = GetRandomPos();
-                waitTime = patrolWaitTime;
-            }
-            else
-            {
-                waitTime -= Time.deltaTime;
-                anim.SetBool("isWalking", false);
-            }
-        }
-        if ((movePos.position.x - transform.position.x) > 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if ((movePos.position.x - transform.position.x) < 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-    }
-
-    Vector2 GetRandomPos()
-    {
-        Vector2 rndPos = new Vector2(Random.Range(leftDownPos.position.x, rightUpPos.position.x), Random.Range(leftDownPos.position.y, rightUpPos.position.y));
-        return rndPos;
     }
 
     private void Attacking()
@@ -148,13 +108,6 @@ public class EnemyBehavior : MonoBehaviour
         {
             enemyAttack.AttackLeft();
         }
-    }
-
-    private void GoToTarget()
-    {
-        anim.SetBool("isWalking", true);
-        spriteRenderer.flipX = playerTransform.position.x > transform.position.x;
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, chasingSpeed * Time.deltaTime);
     }
 
     public void TakeDamage(int damage)
