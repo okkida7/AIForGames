@@ -8,11 +8,7 @@ public class EnemyRangeAttack : MonoBehaviour
     public GameObject projectilePrefab; // Reference to the projectile prefab
     public Transform firePoint; // Point from where the projectile is instantiated
     public float attackRadius = 10f; // Radius within which the enemy can attack
-    public float attackCooldown = 2f; // Time between attacks
-    public float animTime;
-    public float setAnimTime;
-    public float cd;
-    public float setCD;
+    public float attackCooldown = 4f; // Time between attacks
     public int damage = 1;
     public SpriteRenderer spriteRenderer; 
 
@@ -50,26 +46,6 @@ public class EnemyRangeAttack : MonoBehaviour
 
     void Attack()
     {
-        if(animTime>= 0){
-            if(cd <= 0.1f){
-                isAttacking = true;
-                anim.SetBool("isAttacking", isAttacking);
-                animTime -= Time.deltaTime;
-                cd = setCD;
-            } else{
-                isAttacking = false;
-                anim.SetBool("isAttacking", isAttacking);
-                cd -= Time.deltaTime;
-            } if(animTime < setAnimTime){
-                animTime -= Time.deltaTime;
-            }
-        }
-        else{
-            animTime = setAnimTime;
-            isAttacking = false;
-            anim.SetBool("isAttacking", isAttacking);
-        }
-
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         ShadeProjectile projectileScript = projectile.GetComponent<ShadeProjectile>();
         Vector2 direction = (player.position - firePoint.position).normalized;

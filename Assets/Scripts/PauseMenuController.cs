@@ -6,6 +6,7 @@ public class PauseMenuController : MonoBehaviour
     public GameObject pauseMenuPanel;
     public GameObject promptPanel;
     public GameObject playerChoicePanel;
+    public GameObject abilityPanel;
     private bool isPaused = false; 
     public AudioSource selectSE;
 
@@ -34,6 +35,7 @@ public class PauseMenuController : MonoBehaviour
         // Resume the game
         selectSE.Play();
         pauseMenuPanel.SetActive(false);
+        abilityPanel.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -59,6 +61,7 @@ public class PauseMenuController : MonoBehaviour
         // Pause the game
         selectSE.Play();
         pauseMenuPanel.SetActive(true);
+        abilityPanel.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
     }

@@ -256,11 +256,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5837307350934211021, guid: 90b380e6915a04ff494e5057fb8c7c2e, type: 3}
   firePoint: {fileID: 9158577319576022266}
   attackRadius: 5
-  attackCooldown: 2
-  animTime: 0
-  setAnimTime: 0.2
-  cd: 0
-  setCD: 1.5
+  attackCooldown: 3
   damage: 1
   spriteRenderer: {fileID: 4518157856212394493}
 --- !u!1 &7642009732617830051

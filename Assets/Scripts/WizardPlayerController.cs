@@ -21,6 +21,10 @@ public class WizardPlayerController : MonoBehaviour
     public bool isDead = false;
     public AudioSource hurtSE;
     public AudioSource deadSE;
+    private bool canWalkThroughTrees = false;
+    private bool canWalkThroughWater = false;
+    private bool canWalkThroughOther = false;
+    private bool increaseAttackPower = false;
 
     void Start()
     {
@@ -151,6 +155,44 @@ public class WizardPlayerController : MonoBehaviour
             enemy.TakeDamage(1);
         }
         
+    }
+
+    public void EnableIncreaseAttackPower()
+    {
+        increaseAttackPower = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision detected with " + collision.gameObject.tag);
+        if (canWalkThroughTrees && collision.gameObject.CompareTag("Tree"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+        if(canWalkThroughWater && collision.gameObject.CompareTag("Water"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+        if(canWalkThroughOther && collision.gameObject.CompareTag("Obstacle"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+    }
+
+    // Method to enable walking through trees
+    public void EnableWalkThroughTrees()
+    {
+        canWalkThroughTrees = true;
+    }
+
+    public void EnableWalkThroughWater()
+    {
+        canWalkThroughWater = true;
+    }
+
+    public void EnableWalkThroughOther()
+    {
+        canWalkThroughOther = true;
     }
 
     IEnumerator RegenerateStamina()

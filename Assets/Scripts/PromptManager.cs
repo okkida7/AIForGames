@@ -11,6 +11,7 @@ public class PromptManager : MonoBehaviour
     public GameObject promptPanel; // Panel containing the input field and button
     public TMP_InputField promptInputField; // Input field for the prompt
     public GameObject playerChoice;
+    public GameObject abilityPanel;
 
     public GameObject Swordsman;
     public GameObject Axeman;
@@ -71,7 +72,7 @@ public class PromptManager : MonoBehaviour
             }
             Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
             }
-
+        abilityPanel.SetActive(true);
         Time.timeScale = 1f; // Resume the game
     }
 
@@ -88,6 +89,7 @@ public class PromptManager : MonoBehaviour
             }
             Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
         }
+        abilityPanel.SetActive(true);
         Time.timeScale = 1f; // Resume the game
     }
 
@@ -104,6 +106,7 @@ public class PromptManager : MonoBehaviour
             }
             Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
         }
+        abilityPanel.SetActive(true);
         Time.timeScale = 1f; // Resume the game
     }
 }

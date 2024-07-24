@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShadeProjectile : MonoBehaviour
 {
-    public float speed = 5f; // Speed of the projectile
+    public float speed = 2f; // Speed of the projectile
     public int damage = 1; // Damage dealt by the projectile
     private Vector2 direction; // Direction of the projectile
 
