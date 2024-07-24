@@ -66,12 +66,37 @@ public class PromptManager : MonoBehaviour
         if(MapGenerator.landPositions.Count > 0){
             int randomIndex = Random.Range(0, MapGenerator.landPositions.Count);
             Instantiate(Swordsman, MapGenerator.landPositions[randomIndex], Quaternion.identity);
-            int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
-            while(randomIndexEnemy == randomIndex){
-                randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+            if(MapGenerator.landPositions.Count == 2){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
             }
-            Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+            if(MapGenerator.landPositions.Count == 3){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex || randomIndexEnemy2 == randomIndex || randomIndexEnemy2 == randomIndexEnemy){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy2], Quaternion.identity);
             }
+            if(MapGenerator.landPositions.Count >= 4){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy3 = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex || randomIndexEnemy2 == randomIndex || randomIndexEnemy2 == randomIndexEnemy || randomIndexEnemy3 == randomIndex || randomIndexEnemy3 == randomIndexEnemy || randomIndexEnemy3 == randomIndexEnemy2){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy3 = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy2], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy3], Quaternion.identity);
+            }
+        }
         abilityPanel.SetActive(true);
         Time.timeScale = 1f; // Resume the game
     }
@@ -83,11 +108,36 @@ public class PromptManager : MonoBehaviour
         if(MapGenerator.landPositions.Count > 0){
             int randomIndex = Random.Range(0, MapGenerator.landPositions.Count);
             Instantiate(Axeman, MapGenerator.landPositions[randomIndex], Quaternion.identity);
-            int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
-            while(randomIndexEnemy == randomIndex){
-                randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+            if(MapGenerator.landPositions.Count == 2){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
             }
-            Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+            if(MapGenerator.landPositions.Count == 3){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex || randomIndexEnemy2 == randomIndex || randomIndexEnemy2 == randomIndexEnemy){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy2], Quaternion.identity);
+            }
+            if(MapGenerator.landPositions.Count >= 4){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy3 = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex || randomIndexEnemy2 == randomIndex || randomIndexEnemy2 == randomIndexEnemy || randomIndexEnemy3 == randomIndex || randomIndexEnemy3 == randomIndexEnemy || randomIndexEnemy3 == randomIndexEnemy2){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy3 = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy2], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy3], Quaternion.identity);
+            }
         }
         abilityPanel.SetActive(true);
         Time.timeScale = 1f; // Resume the game
@@ -100,11 +150,36 @@ public class PromptManager : MonoBehaviour
         if(MapGenerator.landPositions.Count > 0){
             int randomIndex = Random.Range(0, MapGenerator.landPositions.Count);
             Instantiate(Wizard, MapGenerator.landPositions[randomIndex], Quaternion.identity);
-            int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
-            while(randomIndexEnemy == randomIndex){
-                randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+            if(MapGenerator.landPositions.Count == 2){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
             }
-            Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+            if(MapGenerator.landPositions.Count == 3){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex || randomIndexEnemy2 == randomIndex || randomIndexEnemy2 == randomIndexEnemy){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy2], Quaternion.identity);
+            }
+            if(MapGenerator.landPositions.Count >= 4){
+                int randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                int randomIndexEnemy3 = Random.Range(0, MapGenerator.landPositions.Count);
+                while(randomIndexEnemy == randomIndex || randomIndexEnemy2 == randomIndex || randomIndexEnemy2 == randomIndexEnemy || randomIndexEnemy3 == randomIndex || randomIndexEnemy3 == randomIndexEnemy || randomIndexEnemy3 == randomIndexEnemy2){
+                    randomIndexEnemy = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy2 = Random.Range(0, MapGenerator.landPositions.Count);
+                    randomIndexEnemy3 = Random.Range(0, MapGenerator.landPositions.Count);
+                }
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy2], Quaternion.identity);
+                Instantiate(enemies[Random.Range(0, enemies.Count)], MapGenerator.landPositions[randomIndexEnemy3], Quaternion.identity);
+            }
         }
         abilityPanel.SetActive(true);
         Time.timeScale = 1f; // Resume the game
