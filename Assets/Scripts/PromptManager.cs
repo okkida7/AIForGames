@@ -17,6 +17,8 @@ public class PromptManager : MonoBehaviour
     public GameObject Axeman;
     public GameObject Wizard;
 
+    public GameObject healthPotion;
+
     public GameObject Bandit;
     public GameObject Bat;
     public GameObject Mushroom;
@@ -63,6 +65,8 @@ public class PromptManager : MonoBehaviour
     {
         selectSE.Play();
         playerChoice.SetActive(false);
+        Vector3 potionPosition = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        Instantiate(healthPotion, potionPosition, Quaternion.identity);
         if(MapGenerator.landPositions.Count > 0){
             int randomIndex = Random.Range(0, MapGenerator.landPositions.Count);
             Instantiate(Swordsman, MapGenerator.landPositions[randomIndex], Quaternion.identity);
@@ -105,6 +109,8 @@ public class PromptManager : MonoBehaviour
     {
         selectSE.Play();
         playerChoice.SetActive(false);
+        Vector3 potionPosition = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        Instantiate(healthPotion, potionPosition, Quaternion.identity);
         if(MapGenerator.landPositions.Count > 0){
             int randomIndex = Random.Range(0, MapGenerator.landPositions.Count);
             Instantiate(Axeman, MapGenerator.landPositions[randomIndex], Quaternion.identity);
@@ -147,6 +153,8 @@ public class PromptManager : MonoBehaviour
     {
         selectSE.Play();
         playerChoice.SetActive(false);
+        Vector3 potionPosition = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        Instantiate(healthPotion, potionPosition, Quaternion.identity);
         if(MapGenerator.landPositions.Count > 0){
             int randomIndex = Random.Range(0, MapGenerator.landPositions.Count);
             Instantiate(Wizard, MapGenerator.landPositions[randomIndex], Quaternion.identity);
